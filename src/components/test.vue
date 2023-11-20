@@ -1,41 +1,40 @@
 <script>
+import axios from "axios";
     export default {
-        data(){
-            return {
-                newTask:'',
-                tasks: [],
-            };
+        name: "App",
+        data()
+        {
+        return{
+            data:null,
+            numberOfColumns:2,
+        };
+    },
+       methods:{
+        fetchData(){
+            axios.get('https://jsonplaceholder.typicode.com/todos').then(response=>{this.data=response.data}).catch(error=>{console.error('Error fetching data',error);
+        });
         },
-        methods:{
-            addTask(){
-                if(this.newTask.trim()!==''){
-                    this.tasks.push(this.newTask.trim());
-                    this.newTask='';
-                }
-            },
-            removeTask(index){
-                this.tasks.splice(index,1);
-            },
-        },
-
+       },
     };
 </script>
 
 <template>
     <div>
-        <div>
-            <p>Message is: {{ message }}</p>
-            <input v-model="message" placeholder="edit me" />
-        </div>
-        <div>
-            <input v-model="newTask" @key.enter="addTask" placeholder="Add a new Task">
-            <button @click="addTask">Add</button>
-        </div>
-        <ul>
-            <li v-for="(task,index) in tasks " :key ="index">
-            {{ task }}
-            <button @click="removeTask(index)">Remove</button>
-        </li>
-        </ul>
+        
+    <button @click="fetchData">FetchData</button>
+    <table v-if="data">
+        <thead>
+        <tr>
+        <th>ID</th>
+        <th>title</th>
+        </tr>
+        </thead>
+        <tbody> 
+        <tr v-for="item in data" :key="item.id">
+            <td>{{ item.id }}</td>
+            <td :colspan="5">{{ item.title }}</td>
+        </tr>
+        </tbody>
+    </table>
     </div>
 </template>
