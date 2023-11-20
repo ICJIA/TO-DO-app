@@ -36,7 +36,7 @@ export default {
   </div> 
   <div id="'app"></div>
   <Todo />
-  
+  <test />
   </div>
 </template>
 <style scoped>
