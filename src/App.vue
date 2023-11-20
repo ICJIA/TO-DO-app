@@ -1,9 +1,9 @@
 <script>
 //import { RouterLink, RouterView} from 'vue-router'
-import TheWelcome from './components/TheWelcome.vue'
-import HelloWorld from './components/HelloWorld.vue'
-import Todo from './components/Todo.vue'
-import test from './components/test.vue'
+import TheWelcome from './components/TheWelcome.vue';
+import HelloWorld from './components/HelloWorld.vue';
+import Todo from './components/Todo.vue';
+import test from './components/test.vue';
 export default {
   components:{
     HelloWorld, 
@@ -13,29 +13,31 @@ export default {
   
   data(){
     return {
-      message:'Hello World!'
+      message:'Hello World!'  
     };
   }
+  
 };
 
 </script>
 
 <template>
-    <header>
+    <div>
       
       
     <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
     <div class="wrapper">
-      <HelloWorld msg="You did it?" />
-      <Todo />
+      <HelloWorld msg="You did this" />
+      
       
     </div>
   <div id ="app">
     <p> {{ message }}</p>
+  </div> 
+  <div id="'app"></div>
+  <Todo />
+  
   </div>
-    
-
-</header>  
 </template>
 <style scoped>
 header {
